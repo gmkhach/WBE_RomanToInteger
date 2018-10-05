@@ -36,56 +36,30 @@ namespace WBE_RomanToInteger
 
         static int RomanNumeralToInt(string input)
         {
-            int digits = 0;
-            int tens = 0;
-            int hundreds = 0;
-            int thousands = 0;
-            string rDigits = "";
-            string rTens = "";
-            string rHundreds = "";
-            string[] romanDigits = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
-            string[] romanTens = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
-            string[] romanHundreds = { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
+            int number = 0;
             for (int i = 0; i < input.Length; i++)
             {
-                if (rDigits != "" && input[i] == 'X')
+                switch (input[i])
                 {
-                    rDigits += input[i];
-                }
-                else if (rTens != "" && input[i] == 'C' )
-                {
-                    rTens += input[i];
-                }
-                else if (rHundreds !="" && input[i] == 'M')
-                {
-                    rHundreds += input[i];
-                }
-                else if (input[i] == 'I' || input[i] == 'V')
-                {
-                    rDigits += input[i];
-                }
-                else if (input[i] == 'X' || input[i] == 'L')
-                {
-                    rTens += input[i];
-                }
-                else if (input[i] == 'C' || input[i] == 'D')
-                {
-                    rHundreds += input[i];
+                    case 'X':
+                    case 'x':
+                        number += 10;
+                        break;
+                    case 'L':
+                    case 'l':
+                        number = 40;
+                        break;
+                    case 'I':
+                    case 'i':
+                        number += 1;
+                        break;
+                    case 'V':
+                    case 'v':
+                        number += number != 0 && number % 10 > 0 ? 3 : 5;  
+                        break;
                 }
             }
-            if (romanDigits.Contains(rDigits))
-            {
-                digits = Array.IndexOf(romanDigits, rDigits);
-            }
-            if (romanTens.Contains(rTens))
-            {
-                tens = Array.IndexOf(romanTens, rTens);
-            }
-            if (romanHundreds.Contains(rHundreds))
-            {
-                hundreds = Array.IndexOf(romanHundreds, rHundreds);
-            }
-            return thousands * 1000 + hundreds * 100 + tens * 10 + digits ;
+            return number;
         }
     }
 }
