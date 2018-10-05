@@ -20,17 +20,18 @@ namespace WBE_RomanToInteger
             {
                 try
                 {
-                    Console.Write("Enter a roman numeral\n\n>>> ");
+                    Console.Write("\nEnter a roman numeral between I and XLIX included\n\n>>> ");
                     string input = Console.ReadLine().Trim();
+                    // Write an input validation block here.
                     Console.WriteLine("\nEquivalent Integer: " + RomanNumeralToInt(input));
+                    Console.Write("\nPress Enter to try another string...");
+                    Console.ReadLine();
+                    Console.Clear();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("\n" + ex.Message);
                 }
-                Console.Write("\nPress Enter to try another string...");
-                Console.ReadLine();
-                Console.Clear();
             } while (true);
         }
 
