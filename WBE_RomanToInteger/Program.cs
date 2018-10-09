@@ -24,14 +24,14 @@ namespace WBE_RomanToInteger
                     string input = Console.ReadLine().Trim();
                     // Write an input validation block here.
                     Console.WriteLine("\nEquivalent Integer: " + RomanNumeralToInt(input));
-                    Console.Write("\nPress Enter to try another string...");
-                    Console.ReadLine();
-                    Console.Clear();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine("\n" + ex.Message);
                 }
+                Console.Write("\nPress Enter to try another string...");
+                Console.ReadLine();
+                Console.Clear();
             } while (true);
         }
 
@@ -56,7 +56,7 @@ namespace WBE_RomanToInteger
                         break;
                     case 'V':
                     case 'v':
-                        number += number != 0 && number % 10 > 0 ? 3 : 5;  
+                        number += number != 0 && number % 10 > 0 ? 3 : 5;
                         break;
                 }
             }
